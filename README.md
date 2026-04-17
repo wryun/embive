@@ -47,6 +47,8 @@ Embive templates are available for the following languages:
 - [Nim](https://github.com/embive/embive-nim-template)
 - [Rust](https://github.com/embive/embive-rust-template)
 
+Aside from the Rust interpreter, there's a ([C interpreter](https://github.com/embive/embive/blob/master/C-INTERPRETER.md)).
+
 ## Example
 
 ```rust

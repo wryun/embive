@@ -18,6 +18,7 @@ gdbstub = { version = "0.7.8", optional = true, default-features = false, featur
 gdbstub_arch = { version = "0.3.2", optional = true }
 
 [dev-dependencies]
+embive-c = { path = "ffi/embive-c" }
 embassy-executor = { version = "0.9.1", features = ["arch-std", "executor-thread"] }
 embassy-futures = "0.1.2"
 log = "0.4.29"
@@ -30,6 +31,9 @@ interpreter = []
 async = []
 debugger = ["dep:gdbstub", "dep:gdbstub_arch", "interpreter"]
 alloc = []
+
+[workspace]
+members = ["ffi/embive-c", "ffi/embive-c-sys"]
 
 [package.metadata.docs.rs]
 all-features = true

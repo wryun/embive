@@ -172,7 +172,7 @@ embive_error_t embive_get_syscall(
 embive_error_t embive_memory_slice(
     const embive_interpreter_t *interpreter,
     uint32_t address,
-    const uint8_t **slice,
+    uint8_t **slice,
     size_t *len
 );
 

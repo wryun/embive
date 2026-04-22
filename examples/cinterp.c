@@ -9,7 +9,7 @@
 static uint8_t ram[4096];
 
 static int puts_guest_string(const embive_interpreter_t *interpreter, uint32_t address) {
-    const uint8_t *string;
+    uint8_t *string;
     size_t remaining;
     size_t i;
 

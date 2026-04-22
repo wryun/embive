@@ -254,11 +254,11 @@ static uint32_t embive_execute_cs_op(embive_cs_op_t op, uint32_t current) {
 embive_error_t embive_memory_slice(
     const embive_interpreter_t *interpreter,
     uint32_t address,
-    const uint8_t **slice,
+    uint8_t **slice,
     size_t *len
 ) {
     size_t start = 0;
-    const uint8_t *base = NULL;
+    uint8_t *base = NULL;
     size_t base_len = 0;
 
     if (address >= EMBIVE_RAM_OFFSET) {
@@ -267,7 +267,7 @@ embive_error_t embive_memory_slice(
         base_len = interpreter->memory.ram_len;
     } else {
         start = (size_t)address;
-        base = interpreter->memory.code;
+        base = (uint8_t *)interpreter->memory.code;
         base_len = interpreter->memory.code_len;
     }
 
@@ -284,7 +284,7 @@ static embive_error_t embive_load_bytes(
     embive_interpreter_t *interpreter,
     uint32_t address,
     size_t len,
-    const uint8_t **bytes
+    uint8_t **bytes
 ) {
     size_t available = 0;
     embive_error_t err = embive_memory_slice(interpreter, address, bytes, &available);
@@ -308,7 +308,7 @@ static embive_error_t embive_load_u32(
     uint32_t address,
     uint32_t *value
 ) {
-    const uint8_t *bytes = NULL;
+    uint8_t *bytes = NULL;
     embive_error_t err = embive_load_bytes(interpreter, address, sizeof(*value), &bytes);
     if (err != EMBIVE_OK) {
         return err;
@@ -385,7 +385,7 @@ static embive_error_t embive_load_u16(
     uint32_t address,
     uint16_t *value
 ) {
-    const uint8_t *bytes = NULL;
+    uint8_t *bytes = NULL;
     embive_error_t err = embive_load_bytes(interpreter, address, sizeof(*value), &bytes);
     if (err != EMBIVE_OK) {
         return err;
@@ -400,7 +400,7 @@ static embive_error_t embive_load_u8(
     uint32_t address,
     uint8_t *value
 ) {
-    const uint8_t *bytes = NULL;
+    uint8_t *bytes = NULL;
     embive_error_t err = embive_load_bytes(interpreter, address, sizeof(*value), &bytes);
     if (err != EMBIVE_OK) {
         return err;
